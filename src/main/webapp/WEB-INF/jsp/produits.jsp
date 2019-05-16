@@ -7,18 +7,26 @@
 <meta charset="UTF-8">
 <title>Produits</title>
 <script type="text/javascript" src="achatenligne.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
 <body onload="updateInfoPanier()">
+<nav id="maNav">
+	<ul>
+        <li><a href="<c:url value="/produits"/>">Produit</a> </li>
+        <li><a href="<c:url value="javascript:afficherPanier()"/>">Panier</a> </li>
+        <li><a href="<c:url value="/api/produit"/>">API</a> </li>
+   	</ul> 
+</nav>
+<h1>Produits</h1>
 <section>
-	<p>Voici la liste de nos produits&nbsp;:</p>
 	<p><c:out value="${message}"/></p>
-	<table>
+	<table class="dataList">
 		<thead>
 			<tr>
 				<th>Code</th>
 				<th>Libellé</th>
 				<th>Prix TTC</th>
-				<th></th>
+				<th>Action</th>
 			</tr>
 		</thead>
 		<tbody>

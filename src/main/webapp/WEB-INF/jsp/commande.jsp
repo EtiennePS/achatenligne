@@ -6,16 +6,23 @@
 <head>
 <meta charset="UTF-8">
 <title>Commande</title>
+<link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
 <body>
-
+<nav id="maNav">
+	<ul>
+        <li><a href="<c:url value="/produits"/>">Produit</a> </li>
+        <li><a href="<c:url value="javascript:afficherPanier()"/>">Panier</a> </li>
+        <li><a href="<c:url value="/api/produit"/>">API</a> </li>
+   	</ul> 
+</nav>
+<h1>Commande</h1>
 <section>
 	<c:if test="${empty commande.produits}">
 		<p>Votre commande est vide</p>
 	</c:if>
 	<c:if test="${not empty commande.produits}">
-		<p>Votre commande&nbsp;:</p>
-		<table>
+		<table class="dataList">
 			<thead>
 				<tr>
 					<th>Code</th>

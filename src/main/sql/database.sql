@@ -1,12 +1,12 @@
-drop table if exists ligne_commande;
-drop table if exists commande;
-drop table if exists produit;
+drop database if exists achatenligne;
+create database achatenligne;
+use achatenligne;
 
 create table produit (
   id int(11) not null auto_increment,
-  code varchar(100),
-  libelle varchar(100),
-  prix double(10,2),
+  code varchar(100) not null unique,
+  libelle varchar(100) not null,
+  prix double(10,2) not null,
   primary key(id)
 );
 

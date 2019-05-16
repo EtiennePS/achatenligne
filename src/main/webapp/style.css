@@ -1,0 +1,62 @@
+body {
+	padding: 3px;
+}
+
+h1 {
+	color: brown;
+}
+
+#maNav {
+	display: block;
+	height: 50px;
+}
+
+#maNav ul {
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+}
+
+#maNav li {
+	margin-left: 2px;
+	float: left; /*pour IE*/
+}
+
+#maNav ul li a {
+	display: block;
+	float: left;
+	width: 100px;
+	background-color: #6495ED;
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+	text-align: center;
+	padding: 5px;
+}
+
+#maNav ul li a:hover {
+	background-color: #474787;
+	color: white;
+	text-decoration: none;
+}
+
+.dataList td, .dataList th {
+	/*border: 1px solid black;*/
+	padding: 6px;
+}
+
+.dataList th {
+	text-align: center;
+}
+
+.dataList {
+	border-collapse: collapse;
+}
+
+button {
+	background-color: #049372;
+	font-weight: bold;
+	color: white;
+	border: none;
+	padding: 4px;
+}
