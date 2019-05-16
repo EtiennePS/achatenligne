@@ -1,4 +1,4 @@
-package com.achatenligne.model;
+package com.achatenligne.model.exception;
 
 public class CommandeVideException extends Exception {
 

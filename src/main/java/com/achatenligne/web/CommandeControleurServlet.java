@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.achatenligne.model.Commande;
 import com.achatenligne.model.CommandeService;
-import com.achatenligne.model.CommandeVideException;
+import com.achatenligne.model.exception.CommandeVideException;
 import com.achatenligne.model.ProduitService;
 
 @WebServlet("/commande")

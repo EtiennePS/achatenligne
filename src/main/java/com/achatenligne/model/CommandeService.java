@@ -1,6 +1,7 @@
 package com.achatenligne.model;
 
 import com.achatenligne.dao.CommandeDao;
+import com.achatenligne.model.exception.CommandeVideException;
 
 public class CommandeService {
 

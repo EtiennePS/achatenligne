@@ -4,12 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import com.achatenligne.model.Produit;
+import com.achatenligne.model.exception.ProduitDansCommandeException;
 
 public class ProduitDao extends AbstractDao {
 
@@ -51,6 +53,24 @@ public class ProduitDao extends AbstractDao {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public Optional<Produit> getByCode(String code) {
+        try (Connection connection = ProduitDataSource.getSingleton().getConnection();
+             Statement stmt = connection.createStatement()) {
+
+            try (ResultSet rs = stmt.executeQuery(SELECT_ALL_PRODUITS + " where code = \"" + code +"\"")) {
+                if (rs.next()) {
+                    Produit p = new Produit(rs.getInt("id"), rs.getString("code"), 
+                                            rs.getString("libelle"), rs.getBigDecimal("prix"));
+                    return Optional.of(p);
+                }
+            }
+            return Optional.empty();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 	public void create(Produit produit) {
 		String sql = "insert into produit (code, libelle, prix) values (?, ?, ?)";
@@ -96,7 +116,7 @@ public class ProduitDao extends AbstractDao {
 		}
 	}
 
-	public void delete(Produit produit) {
+	public void delete(Produit produit) throws ProduitDansCommandeException {
 		String sql = "delete from produit where id = ?";
 		try {
 			boolean transactionOk = false;
@@ -108,8 +128,10 @@ public class ProduitDao extends AbstractDao {
 			} finally {
 				checkTransactionAndClose(connection, transactionOk);
 			}
+		} catch (SQLIntegrityConstraintViolationException e) {
+			throw new ProduitDansCommandeException("Le produit ne peut être supprimé car il est dans une commande");
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
-		}
+		} 
 	}
 }
