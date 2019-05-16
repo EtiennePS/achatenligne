@@ -2,6 +2,9 @@ package com.achatenligne.model;
 
 import java.math.BigDecimal;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Produit {
 
 	private int id;
@@ -21,6 +24,10 @@ public class Produit {
 		this.code = code;
 		this.libelle = libelle;
 		this.prix = BigDecimal.valueOf(prix);
+	}
+	
+	public Produit() {
+		
 	}
 
 	public int getId() {

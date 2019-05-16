@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,10 +10,10 @@
 <body>
 
 <section>
-	<c:if test="${empty commande}">
+	<c:if test="${empty commande.produits}">
 		<p>Votre commande est vide</p>
 	</c:if>
-	<c:if test="${not empty commande}">
+	<c:if test="${not empty commande.produits}">
 		<p>Votre commande&nbsp;:</p>
 		<table>
 			<thead>
@@ -29,12 +28,12 @@
 				<tr>
 					<td><c:out value="${produit.code}"/></td>
 					<td><c:out value="${produit.libelle}"/></td>
-					<td><fmt:formatNumber maxFractionDigits="2" currencyCode="EUR" type="CURRENCY" value="${produit.prix}"/></td>
+					<td><fmt:formatNumber currencyCode="EUR" type="CURRENCY" value="${produit.prix}"/></td>
 				</tr>
 			</c:forEach>
 			</tbody>
 		</table>
-		<p>Total TTC&nbsp;: <fmt:formatNumber maxFractionDigits="2" currencyCode="EUR" type="CURRENCY" value="${commande.total}"/></p>
+		<p>Total TTC&nbsp;: <fmt:formatNumber currencyCode="EUR" type="CURRENCY" value="${commande.total}"/></p>
 		<form method="post">
 			<button type="submit">Valider votre commande</button>
 		</form>
