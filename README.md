@@ -1,5 +1,8 @@
-Appli de démo Java EE
+Appli de démo JEE : Servlet, JSP, DAO et API
 =====================
+
+L'application possède une API. 
+Le fichier curl.txt contient des commandes permettant de la tester.
 
 L'application doit pouvoir se connecter à une base de données.
 Le schéma de la base est dans le fichier src/main/sql/database.sql

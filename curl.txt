@@ -5,11 +5,12 @@ Les requêtes suivantes permettent de tester un scénario nominal pour l'API :
 - Modification du produit
 - Suppression du produit
 
-Si la base de donnée ne vient pas d'être (re)créé, l'id ne sera pas 1 et devra être modifié. Une variable a été créé pour simplifier les modifications.
+Si la base de donnée ne vient pas d'être (re)créée avec le script sql fournit, l'id ne sera pas 3 et devra être modifié dans la variable idProduit.
 
-idProduit=1
-curl -v --request POST --data-binary '{"code":"TEST","libelle":"produit de test","prix":100}' --header "Content-Type: application/json" http://localhost:8080/achatenligne/api/produit
-curl -v --request GET http://localhost:8080/achatenligne/api/produit/${idProduit}
-curl -v --request GET http://localhost:8080/achatenligne/api/produit
-curl -v --request PUT --data-binary '{"code":"TEST2","libelle":"produit de test modifié","prix":111}' --header "Content-Type: application/json" http://localhost:8080/achatenligne/api/produit/${idProduit}
-curl -v --request DELETE http://localhost:8080/achatenligne/api/produit/${idProduit}
+idProduit=3
+appHost=localhost:8080
+curl -v --request POST --data-binary '{"code":"TEST","libelle":"produit de test","prix":100}' --header "Content-Type: application/json" http://${appHost}/achatenligne/api/produit
+curl -v --request GET http://${appHost}/achatenligne/api/produit/${idProduit}
+curl -v --request GET http://${appHost}/achatenligne/api/produit
+curl -v --request PUT --data-binary '{"code":"TEST2","libelle":"produit de test modifié","prix":111}' --header "Content-Type: application/json" http://${appHost}/achatenligne/api/produit/${idProduit}
+curl -v --request DELETE http://${appHost}/achatenligne/api/produit/${idProduit}
